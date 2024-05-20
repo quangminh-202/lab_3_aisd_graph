@@ -11,6 +11,7 @@ int main() {
     graph.add_vertex(5);
 
     graph.add_edge(2, 1, 1);
+    graph.add_edge(2, 1, 1);
     graph.add_edge(3, 1, 3);
     graph.add_edge(1, 4, 3);
     graph.add_edge(4, 3, 1);
