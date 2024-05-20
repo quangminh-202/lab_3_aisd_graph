@@ -104,8 +104,8 @@ public:
 		if (!has_vertex(v))
 			throw std::out_of_range("Vertex is not found.");
 		return _edges.at(v).size();
-	}
-
+	} 
+	 
 	//Dijkstra
 	std::vector<Edge> dijkstra(const Vertex& from, const Vertex& to) const {
 		if (!has_vertex(from) || !has_vertex(to)) {
