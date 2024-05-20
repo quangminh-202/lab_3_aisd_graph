@@ -55,11 +55,8 @@ public:
 		return _vertices;
 	}
 
-
 	//method for edge
 	bool add_edge(const Vertex& from, const Vertex& to, const Distance& d) {
-		if (!has_edge(from, to))
-			return false;
 		_edges[from].push_back({ from, to, d });
 		return true;
 	}
@@ -113,6 +110,15 @@ public:
 	std::vector<Edge> dijkstra(const Vertex& from, const Vertex& to) const {
 		if (!has_vertex(from) || !has_vertex(to)) {
 			return {};
+		}
+
+		//check graph have negative weight or no.
+		for (const auto& edges_pair : _edges) {
+			for (const auto& edge : edges_pair.second) {
+				if (edge.distance < 0) {
+					throw std::runtime_error("Graph contains an edge with negative weight.");
+				}
+			}
 		}
 
 		std::unordered_map<Vertex, Distance> distance;
@@ -173,7 +179,7 @@ public:
 		for (const auto& vertex : _vertices) {
 			color[vertex] = Color::White;
 			parent[vertex] = Vertex();
-			distance[vertex] = std::numeric_limits<Distance>::infinity();
+			distance[vertex] = INF;
 		}
 		q.push(start_vertex);
 		color[start_vertex] = Color::Grey;

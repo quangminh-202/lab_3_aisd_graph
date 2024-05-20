@@ -19,7 +19,9 @@ int main() {
     graph.add_edge(4, 5, 1);
     graph.add_edge(5, 2, 2);
 
-    auto action = [](const int& v) {
+    graph.print();
+
+    auto action = [](const int& v) {  //lambda
         std::cout << v << " ";
     };
 
